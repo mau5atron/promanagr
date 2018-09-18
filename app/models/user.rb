@@ -35,6 +35,4 @@ class User < ApplicationRecord
   		!password.nil? || !password_confirmation.nil?
   	end
   end
-
-
 end
