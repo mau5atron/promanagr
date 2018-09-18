@@ -43,7 +43,7 @@ class ConfirmationsController < Devise::ConfirmationsController
 	protected 
 
 	def with_unconfirmed_confirmable
-		@confirmable = User.find_or_intialize_with_error_by(:confirmation_token, params[:confirmation_token])
+		@confirmable = User.find_or_initialize_with_error_by(:confirmation_token, params[:confirmation_token])
 		if !@confirmable.new_record?
 			@confirmable.only_if_unconfirmed { yield }
 		end
