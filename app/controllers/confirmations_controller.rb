@@ -19,9 +19,9 @@ class ConfirmationsController < Devise::ConfirmationsController
 			end
 		end
 
-		if @confirmable.errors.empty? 
+		if !@confirmable.errors.empty? 
 			self.resource = @confirmable
-			render 'devise/confirmations/new'
+			redirect_to 'devise/confirmations/new'
 		end
 	end
 
