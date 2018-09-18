@@ -62,4 +62,3 @@ class ConfirmationsController < Devise::ConfirmationsController
 		sign_in_and_redirect(resource_name, @confirmable)
 	end
 end
-
