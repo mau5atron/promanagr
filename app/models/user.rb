@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+  # hooks up ids between tables
+  has_many :teams
+  has_many :projects
 
   def attempt_set_password(params)
   	p = {}
