@@ -16,14 +16,14 @@ class TeamsController < ApplicationController
 
   def edit
   end
-  
+
   def create
     @team = current_user.teams.build(team_params)
     @team.users.push current_user
 
     respond_to do |format|
       if @team.save
-        format.html { redirect_to root_path, notice: 'Team was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Team was created successfully 🤠' }
         format.json { render :show, status: :created, location: @team }
       else
         format.html { render :new }
@@ -35,7 +35,7 @@ class TeamsController < ApplicationController
   def update
     respond_to do |format|
       if @team.update(team_params)
-        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
+        format.html { redirect_to @team, notice: 'Team was updated successfully 😩👌' }
         format.json { render :show, status: :ok, location: @team }
       else
         format.html { render :edit }
@@ -47,7 +47,7 @@ class TeamsController < ApplicationController
   def destroy
     @team.destroy
     respond_to do |format|
-      format.html { redirect_to teams_url, notice: 'Team was successfully destroyed.' }
+      format.html { redirect_to teams_url, notice: 'Team was removed successfully 😔 {{sad yeehaw}}' }
       format.json { head :no_content }
     end
   end

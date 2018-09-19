@@ -20,15 +20,15 @@ class ProjectsController < ApplicationController
 
 	def create
 		@project = current_user.projects.build(project_params)
-	end
 
-	respond_to do |format|
-		if @project.save
-			format.html { redirect_to @project, notice: 'Project was created successfully 🤠'}
-			format.json { render :show, status: :created, location: @project }
-		else 
-			format.html { render :new }
-			format.json { render json: @project.errors, status: :unprocessable_entity }
+		respond_to do |format|
+			if @project.save
+				format.html { redirect_to @project, notice: 'Project was created successfully 🤠'}
+				format.json { render :show, status: :created, location: @project }
+			else 
+				format.html { render :new }
+				format.json { render json: @project.errors, status: :unprocessable_entity }
+			end
 		end
 	end
 
@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
 	def destroy 
 		@project.destroy 
 		respond_to do |format|
-			format.html { redirect_to root_path, notice: 'Project was successfully destroyed 😔 {{sad yeehaw}}'}
+			format.html { redirect_to root_path, notice: 'Project was removed successfully 😔 {{sad yeehaw}}'}
 			format.json { head :no_content }
 		end
 	end

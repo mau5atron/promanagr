@@ -69,4 +69,7 @@ Rails.application.configure do
   
   # Devise development environment 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # webpacker dev server 
+  config.x.webpacker[:dev_server_host] = "http://127.0.0.1:8080"
 end
