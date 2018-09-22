@@ -52,6 +52,14 @@
 
 <div class="field">
 	<div class="control">
+		<button v-on:click="addUser" class="button is-link">Add user</button>
+	</div>
+</div>
+
+<hr>
+
+<div class="field">
+	<div class="control">
 		<%  if current_page?(new_team_path) %>
 			<button v-on:click="saveTeam" class="button is-success is-large">Create Team</button>
 		<% else %>

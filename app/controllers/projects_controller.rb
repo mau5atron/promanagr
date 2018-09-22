@@ -10,8 +10,8 @@ class ProjectsController < ApplicationController
 	end
 
 	def new
-		@project = current_user.projects.build 
-		@teams = Team.where('id = ?, current_user.team_id')
+		@project = current_user.projects.build
+		@teams = Team.where('id = ?', current_user.team_id)
 	end
 
 	def edit 

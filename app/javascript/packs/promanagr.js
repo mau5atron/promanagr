@@ -6,12 +6,12 @@ Vue.use(VueResource)
 
 document.addEventListener('turbolinks:load', () => {
 	Vue.http.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-  const element = document.getElementById('team-form')
+  let element = document.getElementById('team-form')
 
   if(element != null){
   	const id = element.dataset.id
   	const team = JSON.parse(element.dataset.team)
-  	let users_attributes = JSON.parse(element.dataset.usersAttributes)
+  	let users_attributes = JSON.parse(element.dataset.userAttributes)
   	users_attributes.forEach(function(user){
   		user._destroy = null; 
   	});
@@ -80,6 +80,7 @@ document.addEventListener('turbolinks:load', () => {
 
   					})
   				} else {
+  					// edit an existing team 
   					this.$http.put(`/teams/${this.id}`, { team: this.team }).then(response => {
   						Turbolinks.visit(`/teams/${response.body.id}`)
   					}, response => {
@@ -96,17 +97,3 @@ document.addEventListener('turbolinks:load', () => {
   } 
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
