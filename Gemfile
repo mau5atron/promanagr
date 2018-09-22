@@ -48,6 +48,7 @@ gem "wysiwyg-rails"
 gem 'public_activity', '~> 1.5'
 gem "figaro"
 gem 'actionpack'
+gem 'font-awesome-sass'
 # gems needed
 
 
