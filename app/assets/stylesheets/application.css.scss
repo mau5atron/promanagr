@@ -45,6 +45,22 @@
 @import 'plugins/table.min.css';
 @import 'plugins/video.min.css';
 
+body {
+	position: relative;
+}
+
+.box {
+	padding: 0;
+}
+
+div#notification {
+	display: block;
+  transition:opacity 500ms;
+  z-index: 999;
+  position: absolute;
+  width: 100%;
+}
+
 .notification {
 	border-radius: 0;
 }
