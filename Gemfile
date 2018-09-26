@@ -49,6 +49,7 @@ gem 'public_activity', '~> 1.5'
 gem "figaro"
 gem 'actionpack'
 gem 'font-awesome-sass'
+gem 'tlsmail'
 # gems needed
 
 

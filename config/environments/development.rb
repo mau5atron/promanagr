@@ -61,14 +61,43 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  require 'tlsmail'
+
+  Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
+    ActionMailer::Base.delivery_method = :smtp
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.default :charset => "utf-8"
+      ActionMailer::Base.smtp_settings = {
+       :address              => "smtp.gmail.com",
+       :port                 => 587,
+       :user_name            => ENV["GMAIL_USERNAME"],
+       :password             => ENV["GMAIL_PASSWORD"],
+       :authentication       => "plain",
+       :enable_starttls_auto => true
+      }
 
 
-  # mailcatcher port settings 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000'}
+  config.action_mailer.default_url_options = { :host => 'staging1.4iqcmsrjxp.us-east-1.elasticbeanstalk.com'}
   
-  # Devise development environment 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # ActionMailer::Base.delivery_method = :smtp 
+  # ActionMailer::Base.perform_deliveries = true
+  # ActionMailer::Base.raise_delivery_errors = true
+  # ActionMailer::Base.smtp_settings = {
+  #   :address => 'smtp.gmail.com',
+  #   :port => 587,
+  #   :domain => 'gmail.com',
+  #   :authentication => :plain, 
+  #   :user_name => ENV["GMAIL_USERNAME"],
+  #   :password => ENV["GMAIL_PASSWORD"]
+  # }
+
+  # # mailcatcher port settings 
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  
+  # # Devise development environment 
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # webpacker dev server 
   config.x.webpacker[:dev_server_host] = "http://127.0.0.1:8080"

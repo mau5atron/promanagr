@@ -93,4 +93,26 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+
+  # Production mailer settings
+
+    require 'tlsmail'
+
+  Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
+    ActionMailer::Base.delivery_method = :smtp
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.default :charset => "utf-8"
+      ActionMailer::Base.smtp_settings = {
+       :address              => "smtp.gmail.com",
+       :port                 => 587,
+       :user_name            => ENV["GMAIL_USERNAME"],
+       :password             => ENV["GMAIL_PASSWORD"],
+       :authentication       => "plain",
+       :enable_starttls_auto => true
+      }
+
+ config.action_mailer.default_url_options = { :host => 'staging1.4iqcmsrjxp.us-east-1.elasticbeanstalk.com'}
+
 end
