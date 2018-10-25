@@ -9,8 +9,8 @@ document.addEventListener('turbolinks:load', () => {
   let element = document.getElementById('team-form')
 
   if(element != null){
-  	const id = element.dataset.id
-  	const team = JSON.parse(element.dataset.team)
+  	let id = element.dataset.id
+  	let team = JSON.parse(element.dataset.team)
   	let users_attributes = JSON.parse(element.dataset.userAttributes)
   	users_attributes.forEach(function(user){
   		user._destroy = null; 
@@ -57,7 +57,7 @@ document.addEventListener('turbolinks:load', () => {
   				if(user.id == null){
 						this.team.users_attributes.splice(index, 1)
   				} else {
-  					this.team.users_attributes._destroy = "1"
+  					this.team.users_attributes[index]._destroy = "1"
   				}
   			},
 

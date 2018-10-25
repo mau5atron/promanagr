@@ -50,6 +50,7 @@ gem "figaro"
 gem 'actionpack'
 gem 'font-awesome-sass'
 gem 'tlsmail'
+gem 'hirb'
 # gems needed
 
 

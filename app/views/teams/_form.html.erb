@@ -40,9 +40,13 @@
 
 		<div class="field">
 			<div class="control">
-				<button v-on:click="removeUser(index)" class="button is-small">
-					Remove
-				</button>
+				<% if current_user %>
+						
+				<% else %>
+					<button v-on:click="removeUser(index)" class="button is-small">
+						Remove
+					</button>
+				<% end %>
 			</div>
 		</div>
 
